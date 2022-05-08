@@ -1,0 +1,14 @@
+{
+  "name": "session",
+  "version": "1.0.0",
+  "description": "session package to handle auth and db storage",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^9.8.0"
+  }
+}
