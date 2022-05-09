@@ -11,3 +11,9 @@ export type StateTransitions = {
 };
 
 export type StatesMap = { [key: State]: StateTransitions };
+
+export type StateMachine = {
+	currentState: State;
+	states: StatesMap;
+	onError: () => void;
+};

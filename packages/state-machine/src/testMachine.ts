@@ -1,5 +1,5 @@
 import type { StatesMap } from './types';
-import FSM from './main';
+import { createMachine, sendEvent } from './main';
 
 const initialState = 'first';
 var currentTransition = '';
@@ -41,13 +41,16 @@ const statesMap: StatesMap = {
 	third: {},
 };
 
-let fsm = new FSM(initialState, statesMap);
+let fsm = createMachine(initialState, statesMap, () =>
+	console.log('bad transition')
+);
 
-fsm.sendEvent('move_to_second');
-assert(currentTransition === 'move_to_second');
-fsm.sendEvent('move_to_third');
-assert(currentTransition === 'move_to_third');
+fsm = sendEvent(fsm, 'move_to_seconds');
+// console.log(fsm);
+// assert(currentTransition === 'move_to_second');
+fsm = sendEvent(fsm, 'move_to_third');
+// assert(currentTransition === 'move_to_third');
 // state machine finished, no more transitions
-fsm.sendEvent('move_to_third');
-assert(fsm.getCurrentState() === 'third');
-// assert(fsm.getCurrentState() === FSM.errorState);
+fsm = sendEvent(fsm, 'move_to_third');
+// TODO connect error state to all state transitions
+// assert(fsm.currentState === 'FINAL');
