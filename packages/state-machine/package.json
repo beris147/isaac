@@ -1,0 +1,11 @@
+{
+	"name": "state-machine",
+	"version": "1.0.0",
+	"description": "simple state machine to handle state of views",
+	"main": "index.js",
+	"scripts": {
+		"test": "tsc && node ./build/testMachine.js"
+	},
+	"author": "",
+	"license": "ISC"
+}
